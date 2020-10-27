@@ -1,0 +1,82 @@
+<html>
+<head>
+  <title>Draw Rainbow with Linear gradient</title>
+    <style type="text/css">
+        #MyCanvas {
+            height: 200px;
+            width:200px;
+            margin-left: 700px;
+            border:1px solid black;
+            margin-right:300px;
+            border-radius: 40px;
+            margin-top: 20px;
+            
+        }
+    
+    </style>
+  <script type="text/javascript">
+      function draw() {
+          var canvas = document.getElementById("MyCanvas");
+          if (canvas.getContext) {
+              var ctx = canvas.getContext("2d");
+              objGradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+              objGradient.addColorStop(0, 'red');
+              objGradient.addColorStop(1 / 6, 'orange');
+              objGradient.addColorStop(2 / 6, 'yellow');
+              objGradient.addColorStop(3 / 6, 'green')
+              objGradient.addColorStop(4 / 6, 'blue');
+              objGradient.addColorStop(5 / 6, 'Indigo');
+              objGradient.addColorStop(1, 'Violet');
+ 
+              ctx.fillStyle = objGradient;
+              ctx.fillRect(0,0, canvas.width,200);
+              ctx.fill();
+          }
+      }
+      window.onload = function() {
+        var c = document.getElementById("MyCanvas1");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("img1");
+        ctx.drawImage(img,20,20);
+}
+window.onload = function() {
+        var c = document.getElementById("MyCanvas1");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("img2");
+        ctx.drawImage(img,20,20);
+}
+window.onload = function() {
+        var c = document.getElementById("MyCanvas1");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("img3");
+        ctx.drawImage(img,20,20);
+}
+  </script>
+</head>
+<body onload="draw();">
+   <p>
+    Nokia Corporation (natively Nokia Oyj, referred to as Nokia; 
+    Finnish: [ˈnokiɑ], UK: /ˈnɒkiə/, US: /ˈnoʊkiə/) is a Finnish
+     multinational telecommunications, information technology,
+      and consumer electronics company, founded in 1865.
+       Nokia's headquarters are in Espoo, Finland,
+        in the greater Helsinki metropolitan area.
+         In 2018, Nokia employed approximately 103,000 people across over 100 countries, did business in more than 130 countries, 
+         and reported annual revenues of around €23 billion.[5] Nokia is a public limited company listed on the Helsinki Stock Exchange and New York Stock Exchange.[6] It is the world's 415th-largest company measured by 2016 revenues according to the Fortune Global 500, having peaked at 85th place in 2009
+     It is a component of the Euro Stoxx 50 stock market index.
+    
+   </p>
+
+
+
+
+    <P> WATCH OUR GALLERY </P>
+    <img id="img1" width="60px" height="60px" 
+    src="./download (2).jpg">
+    <img id="img2" width="60px" height="60px" 
+    src="./download (3).jpg">
+    <canvas id="MyCanvas"> </canvas>
+    <canvas id="MyCanvas1"> </canvas>
+    
+</body>
+</html>
