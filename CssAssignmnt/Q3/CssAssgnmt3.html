@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+}
+</style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+<div class="container">
+  <form action="">
+    <div class="row">
+        <div class="col-25">
+          <label for="fid">Employee ID</label>
+        </div>
+        <div class="col-75">
+          <input required type="text" id="fid" name="id" max="10001" min="15000" placeholder="Enter your id..">
+        </div>
+      </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">First name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" required  id="fname" name="firstname"   placeholder="Your name..">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Last Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" required id="lname" name="lastname" placeholder="Enter last name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="dept">Department</label>
+    </div>
+    <div class="col-75">
+        <input type="checkbox" id="HR" name="HR" value="HR">HR <br>
+        <input type="checkbox" id="it" name="it" value="it">IT <br>
+        <input type="checkbox" id="admin" name="admin" value="admin">ADMIN<br>
+        <input type="checkbox" id="finance" name="finance" value="finance">FINANCE <br>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-25">
+          <label for="date">Date of joining</label>
+      </div>
+      <div class="col-75">
+          <input type="date" required  id="date" name="date">
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+        <label for="email">Email id</label>
+    </div>
+    <div class="col-75">
+        <input type="email" required id="email" name="email">
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-25">
+            <label for="number">Contact No</label>
+        </div>
+       <div class="col-75">
+        <input type="contact" required id="contact" name="contact">
+       </div>
+    </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="address">Address</label>
+    </div>
+    <div class="col-75">
+      <textarea id="address" required name="address" placeholder="Write your address here.." style="height:200px"></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+        <label for="tarea">Training programs to be attended</label>
+    </div>
+    <div class="col-75">
+        <input type="checkbox" id="webbasics" name="webbasics" value="webbasics">web basics
+        <input type="checkbox" id="c#" name="c#" value="c#">c#
+        <input type="checkbox" id="Entityfr" name="Entityfr" value="Entityfr">Entity framework
+        <input type="checkbox" id="dotnet" name="dotnet" value="dotnet">ASP.NET MVC
+    </div>
+    </div>
+  <div class="row">
+    <input type="submit" name="register" value="Register">
+    <input type="submit" name="cancel" value="Cancel">
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
