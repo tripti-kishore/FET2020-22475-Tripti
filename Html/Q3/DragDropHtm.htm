@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> drag and drop</title>
+<style>
+#div1 {
+  width: 350px;
+  height: 300px;
+  padding: 10px;
+  border: 1px solid red;
+}
+</style>
+<script src="./dragdrop.js"></script>
+</head>
+<body>
+
+<p>Drag and drop of the image...using html api:</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br>
+<img id="drag1" src=".\download.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+</body>
+</html>
