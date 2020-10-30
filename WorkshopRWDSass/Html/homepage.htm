@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>RWD AND SASS Workshop....</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+    
+    </head>
+    <script>
+        function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if(x.className === "main-body") {
+                x.className += " responsive";
+            } else {
+            x.className = "main-body";
+            }         
+        }
+    </script>
+      
+   
+    <body>
+        <header>
+        WELCOME TO THE FLOWER WORLD
+    
+        <p>FLOWER:known as a bloom or blossom</p>
+     
+        </header>
+        <div class="main-body" id="myTopnav">
+                <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#about">About</a></li>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                  </a>
+                </ul>
+              
+        </div>
+        
+        <div class="container">
+            <div class="abt">
+                <p><b>HERE COME TO KNOW MORE ABOUT THE FLOWER</b></p>
+                <br>
+                Freshly Sourced will provide you with all the tricks of the trade when it comes to floral care. From floral design classes to tips on how to prolong your new floral arrangement, we have sourced expertise from  floral maestros all over the country so you can show off your own unique craft. 
+
+                Flowers come in thousands of different shapes and color combinations, each with their own name and classification. There are over 400,000 types of flowering plants, so there is sure to be a flower that speaks to your unique personality! If that seems like a lot to sort through have no fear – here is a quick list of some of the most popular flower types:
+            </div>
+            <br>
+            <div class="left">
+                <img src="../images/download1.jpg">
+                <p>With bright blooms that go from mid-summer to early fall, sunflowers say “summer” like no other plant.</p>
+            </div>
+            <div class="right">
+                <img src="../images/download2.jpg">
+                <p>With bright blooms that go from mid-summer to early fall, sunflowers say “summer” like no other plant.</p>
+            </div>
+        </div>
+       
+      
+        <div class="footer">All Copyright is Reserved @flowerworld.com</div>
+    </body>
+</html>
