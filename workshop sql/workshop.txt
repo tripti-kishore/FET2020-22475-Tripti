@@ -1,0 +1,205 @@
+1.
+mysql> select *from employee where empname like 'p%';
++-------+---------+------------+------------+-----------------+-----------+
+| empid | empname | department | conatactno | emailid         | empheadid |
++-------+---------+------------+------------+-----------------+-----------+
+|   102 | priya   | E-104      |   23456684 | priya@gmail.com |       103 |
++-------+---------+------------+------------+-----------------+-----------+
+1 row in set (0.00 sec)
+
+2.mysql>mysql> select count(*) from empSalary where Ispermannet="yes" and salary>5000;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+
+3.mysql> select *from employee where emailid like '%gmail%';
++-------+----------+------------+------------+--------------------+-----------+
+| empid | empname  | department | conatactno | emailid            | empheadid |
++-------+----------+------------+------------+--------------------+-----------+
+|     1 | isha     | E-101      |   23456644 | isha@gmail.com     |       105 |
+|   102 | priya    | E-104      |   23456684 | priya@gmail.com    |       103 |
+|   103 | neha     | E-101      |   23476684 | neha@gmail.com     |       101 |
+|   104 | rahul    | E-102      |   25476684 | rahul@gmail.com    |       101 |
+|   105 | abhishek | E-103      |   23476684 | abhishek@gmail.com |       102 |
++-------+----------+------------+------------+--------------------+-----------+
+5 rows in set (0.00 sec)
+
+4.
+mysql> select *from employee where department="E-104" or department="E-102";
++-------+---------+------------+------------+-----------------+-----------+
+| empid | empname | department | conatactno | emailid         | empheadid |
++-------+---------+------------+------------+-----------------+-----------+
+|   102 | priya   | E-104      |   23456684 | priya@gmail.com |       103 |
+|   104 | rahul   | E-102      |   25476684 | rahul@gmail.com |       101 |
++-------+---------+------------+------------+-----------------+-----------+
+2 rows in set (0.00 sec)
+
+5.mysql> select deptid,deptname from empdept where deptid="E-102";
++--------+-------------+
+| deptid | deptname    |
++--------+-------------+
+| E-102  | development |
++--------+-------------+
+1 row in set (0.00 sec)
+
+6.mysql> select sum(salary)as total from empSalary where Ispermannet="yes";
++-------+
+| total |
++-------+
+| 16200 |
++-------+
+1 row in set (0.00 sec)
+
+7.mysql> select empname from employee where empname like '__h%';
++----------+
+| empname  |
++----------+
+| isha     |
+| neha     |
+| rahul    |
+| abhishek |
++----------+
+4 rows in set (0.00 sec)
+
+8.mysql> select count(empid) as employee ,projectid from empProject group by pro
+ctid;
++----------+-----------+
+| employee | projectid |
++----------+-----------+
+|        2 | p-1       |
+|        1 | p-2       |
+|        2 | p-4       |
++----------+-----------+
+3 rows in set (0.00 sec)
+9.
+mysql> select deptname from empdept where deptid in( select department from em
+oyee where empid >103);
++--------------+
+| deptname     |
++--------------+
+| development  |
+| housekeeping |
++--------------+
+2 rows in set (0.00 sec)
+10.
+mysql> select empname from employee where empheadid=(select empid from employe
+where empname="abhishek");
++---------+
+| empname |
++---------+
+| isha    |
++---------+
+1 row in set (0.00 sec)
+11.
+mysql> select empname from employee where empid=(select depthead from empdept
+ere deptname="hr");
++----------+
+| empname  |
++----------+
+| abhishek |
++----------+
+1 row in set (0.00 sec)
+
+
+
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE addDataEmp
+    -> (
+    -> IN id int,
+    -> IN ename varchar(10),
+    -> IN depart varchar(50),
+    -> IN Contact bigint(10),
+    -> IN email varchar(50),
+    -> IN empheadid int
+    -> )
+    -> BEGIN
+    -> INSERT into employee(empid,empname,department,conatactno,emailid,emphea
+d)
+    -> values(id,ename,depart,Contact,email,empheadid);
+    -> END //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER ;
+mysql> CALL addDataEmp(106,'priyanka',"E-105",,87564433,"priyanka@yahoo.com",1
+);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual tha
+corresponds to your MySQL server version for the right syntax to use near '875
+433,"priyanka@yahoo.com",104)' at line 1
+mysql> CALL addDataEmp(106,'priyanka',"E-105",87564433,"priyanka@yahoo.com",10
+;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT *FROM employee;
++-------+----------+------------+------------+--------------------+-----------
+| empid | empname  | department | conatactno | emailid            | empheadid
++-------+----------+------------+------------+--------------------+-----------
+|     1 | isha     | E-101      |   23456644 | isha@gmail.com     |       105
+|   102 | priya    | E-104      |   23456684 | priya@gmail.com    |       103
+|   103 | neha     | E-101      |   23476684 | neha@gmail.com     |       101
+|   104 | rahul    | E-102      |   25476684 | rahul@gmail.com    |       101
+|   105 | abhishek | E-103      |   23476684 | abhishek@gmail.com |       102
+|   106 | priyanka | E-105      |   87564433 | priyanka@yahoo.com |       104
++-------+----------+------------+------------+--------------------+-----------
+6 rows in set (0.00 sec)
+
+mysql> DELIMITER //
+mysql> Create procedure deleteDataEmp(IN id int)
+    -> BEGIN
+    -> DELETE from employee
+    -> WHERE empid=id;
+    -> END //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELIMITER ;
+mysql> CALL deleteDataEmp(1);
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constr
+nt fails (`workdhop_22475`.`empdept`, CONSTRAINT `empdept_ibfk_1` FOREIGN KEY
+depthead`) REFERENCES `employee` (`empid`))
+mysql>
+mysql> CREATE PROCEDUE updateData(id int,ename varchar(20))
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual tha
+corresponds to your MySQL server version for the right syntax to use near 'PRO
+DUE updateData(id int,ename varchar(20))' at line 1
+mysql>
+mysql>
+mysql> DELIMITER //
+mysql> CREATE PROCEDUE updateData(id int,ename varchar(20)
+    -> BEGIN
+    -> Update employee
+    -> SET empid=id,
+    -> empname=ename
+    -> where empid=id;
+    -> END;
+    -> END //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual tha
+corresponds to your MySQL server version for the right syntax to use near 'PRO
+DUE updateData(id int,ename varchar(20)
+BEGIN
+Update employee
+SET empid=id,' at line 1
+mysql> DELIMITER //
+mysql> CREATE PROCEDUE updateData(id int,ename varchar(20))
+    -> BEGIN
+    -> Update employee
+    -> SET empname=ename
+    -> WHERE empid=id;
+    -> END //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual tha
+corresponds to your MySQL server version for the right syntax to use near 'PRO
+DUE updateData(id int,ename varchar(20))
+BEGIN
+Update employee
+SET empname=' at line 1
+mysql> DELIMITER //
+mysql> CREATE PROCEDUE updateData(id int,ename varchar(20)
+    -> BEGIN
+    -> DELIMITER //
+
+
+
+
